@@ -4,11 +4,7 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const colors = require('colors');
 const { table } = require('table');
-const { number } = config.columns[{number}].width
-
-let config,
-    data,
-    output;
+const bamazon = require('./bamazon');
 
 let connection = mysql.createConnection({
     host: "localhost",
@@ -18,12 +14,43 @@ let connection = mysql.createConnection({
     database: "bamazon"                     // The database name
 });
 
-connection.connect(function(err) {
-    if (err) throw err;                     
-    displayProducts();
+// Establishes the variables for the table npm to display the information in a clean table...
+let config,
+    data,
+    output;
 
+function bamazonCustomer () {
+        
+    // Clears the terminal...
+    process.stdout.write('\033c'); 
+
+    // Displays the open welcome screen...
+    let config,
+        data,
+        output;
+    
+    data = [
+        ['             ' + 'BAMAZON!'.yellow + '             ']
+    ];
+    config = {
+        columns: {
+            0: {
+                minWidth: 25
+            },
+        }
+    };
+    output = table(data, config);
+    console.log(output);
+    loadingDisplayProducts(); // <--Starts the app...
+    
+    // Sets a loading period for the display of products...
+    function loadingDisplayProducts() {
+        console.log("Loading products...\n");
+        setTimeout(displayProducts, 2000);
+    };
+    
+    // Displays the products for the user to purchase from...
     function displayProducts() {
-        console.log("Selecting all products...\n");
         connection.query("SELECT * FROM products", function(err, res) {
             if (err) throw err;
 
@@ -44,19 +71,20 @@ connection.connect(function(err) {
             }
             output = table(data, config);
             console.log(output);
-            start();
+            purchaseProduct();
         });
     };
 
-    function start() {                  // The app should then prompt users with two messages.
+    // Allows user to purchase a product...
+    function purchaseProduct() {                 
         inquirer.prompt([
-            {                           // 1) The first should ask them the ID of the product they would like to buy.
+            {                           
                 name: "thisProduct", 
                 type: "input",
                 message: "What is the " + "ID".underline + " of the product you would like to buy?",
             },
 
-            {                           // 2) The second message should ask how many units of the product they would like to buy.
+            {                          
                 name: "thisMany", 
                 type: "input", 
                 message: "How " + "many".underline + " would you like to buy?",
@@ -66,34 +94,56 @@ connection.connect(function(err) {
 
             let productID = answer.thisProduct; 
             let howMany = answer.thisMany;
-            let stockQuantity; 
-
+            
             console.log("Checking if available...\n");
-            connection.query("SELECT stock_quantity FROM products WHERE item_id=" + productID, function(err, res) {
+            connection.query("SELECT stock_quantity, price, product_sales FROM products WHERE item_id=" + productID, function(err, res) {
                 
-                stockQuantity = res[0].stock_quantity;
+                let productSale = res[0].product_sales;
+                let stockQuantity = res[0].stock_quantity;
                 
                 if (err) throw err;
 
                 if (stockQuantity < howMany) {
-                    console.log('Insufficient quantity')
-                } else {
+                    console.log('Insufficient quantity');
 
-                    console.log('We have enough!');
+                    inquirer.prompt([
+                        {                           
+                            name: "continue", 
+                            type: "list",
+                            message: "Would you like to continue shopping?",
+                            choices: ['Yes', 'No']
+                        },
+                    ]).then(function(yesOrNo) { 
+                        let customerContinueResponse = yesOrNo.continue;
+                        if (customerContinueResponse === "Yes") {
+                            setTimeout(loadingDisplayProducts, 2000);
+                        } else {
+                            console.log("Thank you for shopping!")
+                            setTimeout(bamazon.start, 2000);
+                        };   
+                    });
+
+                } else {
                     console.log("Completing order...\n");
-                    console.log("Your total is: $" + (res[0].price * howMany).toFixed(2))
-                    connection.query("UPDATE products SET ? WHERE ?",
+                    
+                    let message = function () {
+                        console.log("Your total is: $" + (res[0].price * howMany).toFixed(2) + "\n")
+                    };
+                    setTimeout(message, 1000);
+                    console.log("Stock left: " + (res[0].stock_quantity - howMany));
+                    console.log("Product Sales: " + ( res[0].price * howMany + parseInt(productSale) ) )
+                    connection.query("UPDATE products SET stock_quantity = ?, product_sales = ? WHERE item_id = ?",
                         [
-                            {
-                                stock_quantity: (res[0].stock_quantity - howMany)
-                            },
-                            {
-                                item_id: productID
-                            }
-                        ],
+                            res[0].stock_quantity - howMany, 
+                            res[0].price * howMany + parseInt(productSale), 
+                            productID
+                        ]
                     );
+                    setTimeout(bamazon.start, 3000);
                 };
             });
         }); 
     };
-});
+};
+    
+module.exports.bamazonCustomer = bamazonCustomer;
