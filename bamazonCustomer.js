@@ -137,8 +137,7 @@ function bamazonCustomer () {
                         console.log("Your total is: $" + (res[0].price * howMany).toFixed(2) + "\n")
                     };
                     setTimeout(message, 1000);
-                    console.log("Stock left: " + (res[0].stock_quantity - howMany));
-                    console.log("Product Sales: " + ( res[0].price * howMany + parseInt(productSale) ) )
+                    
                     connection.query("UPDATE products SET stock_quantity = ?, product_sales = ? WHERE item_id = ?",
                         [
                             res[0].stock_quantity - howMany, 

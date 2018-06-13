@@ -28,7 +28,14 @@ There are three built in options:
 
 # <a name="demo"></a>Demo
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+###Customer Demo
+![Customer](/gifs/customer.gif)
+
+###Manager Demo
+![Manager](/gifs/manager.gif)
+
+###Supervisor Demo
+![Supervisor](/gifs/supervisor.gif)
 
 # <a name="setup"></a>Setup
 
