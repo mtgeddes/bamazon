@@ -7,7 +7,7 @@ This application utilizes the command terminal interface to demonstrate connecti
     * [Manager](#manager)
     * [Supervisor](#supervisor)
 * [Setup](#setup)
-* [NPM](#npm)
+* [NPMs](#npm)
 
 # <a name="features"></a>Features
 
@@ -57,7 +57,7 @@ DB_USER=inputUsernameHere
 node bamazon
 ```
 
-## <a name="npm"></a>NPM Packages Used
+## <a name="npm"></a>NPMs Used
 * [mysql] (https://www.npmjs.com/package/mysql) - Handles connections to mysql server.
 * [inquirer] (https://www.npmjs.com/package/inquirer) - Handles user inputs.
 * [table] (https://www.npmjs.com/package/table) - Creates readable tables for content within the terminal.
