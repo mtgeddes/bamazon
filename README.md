@@ -2,7 +2,7 @@
 This application utilizes the command terminal interface to demonstrate connectivity of [Node.js](https://nodejs.org/en/) and [MySQL](https://www.mysql.com/). 
 
 * [Features](#features)
-* [Demo](#demo)
+* [Demos](#demo)
     * [Customer](#customer)
     * [Manager](#manager)
     * [Supervisor](#supervisor)
@@ -15,28 +15,28 @@ There are three built in options:
 
 - General
     - Handles invalid user input.
-#### <a name="customer">Customer
+- Customer
     - Allows purchasing of items in stock.
     - Allows user to view products.
     - Informs user of insufficent stock upon purchase.
-#### <a name="manager">Manager
+- Manager
     - Allows manager to see products sold and stock.
     - Allows manager to see low stock.
     - Allows manager to add to inventory.
     - Allows manager to add a new product.
-#### <a name="supervisor">Supervisor
+- Supervisor
     - Allows supervisor to see profits.
     - Allows supervisor to add a new department.
 
-# <a name="demo"></a>Demo
+# <a name="demo"></a>Demos
 
-### Customer Demo
+### <a name="customer">Customer Demo
 ![Customer](/gifs/customer.gif)
 
-### Manager Demo
+#### <a name="manager">Manager Demo
 ![Manager](/gifs/manager.gif)
 
-### Supervisor Demo
+#### <a name="supervisor">Supervisor Demo
 ![Supervisor](/gifs/supervisor.gif)
 
 # <a name="setup"></a>Setup
