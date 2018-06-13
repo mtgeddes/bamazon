@@ -4,7 +4,7 @@
   "description": "An amazon mock app using Node.js and MySQL.",
   "main": "bamazonCustomer.js",
   "scripts": {
-    "start": "node your-script.js",
+    "start": "node bamazon.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
