@@ -82,12 +82,20 @@ function bamazonCustomer () {
                 name: "thisProduct", 
                 type: "input",
                 message: "What is the " + "ID".underline + " of the product you would like to buy?",
+                validate: function validateNumber(check){
+                    let reg = /^\d+$/;
+                    return reg.test(check) || "Input should be a number";
+                }
             },
 
             {                          
                 name: "thisMany", 
                 type: "input", 
                 message: "How " + "many".underline + " would you like to buy?",
+                validate: function validateNumber(check){
+                    let reg = /^\d+$/;
+                    return reg.test(check) || "Input should be a number";
+                }
             }
 
         ]).then(function(answer) {
