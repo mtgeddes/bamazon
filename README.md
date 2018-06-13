@@ -51,7 +51,7 @@ npm i
 DB_PASS=inputPasswordHere
 DB_USER=inputUsernameHere
 ```
-* Step four: Make sure to create your database within MySQL useing the MySQL schema found in bamazon.sql file. 
+* Step four: Make sure to create your database within MySQL using the MySQL schema found in bamazon.sql file. 
 * Step five: Run the following command:
 ```
 node bamazon
