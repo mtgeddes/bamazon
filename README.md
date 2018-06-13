@@ -3,6 +3,9 @@ This application utilizes the command terminal interface to demonstrate connecti
 
 * [Features](#features)
 * [Demo](#demo)
+    * [Customer](#customer)
+    * [Manager](#manager)
+    * [Supervisor](#supervisor)
 * [Setup](#setup)
 * [NPM](#npm)
 
@@ -11,20 +14,19 @@ This application utilizes the command terminal interface to demonstrate connecti
 There are three built in options:
 
 - General
-    - [x] Handles invalid user input.
-    - [x] Streamlined command terminal interface for easy navigation.
-- Customer
-    - [x] Allows purchasing of items in stock.
-    - [x] Allows user to view products.
-    - [x] Informs user of insufficent stock upon purchase.
-- Manager
-    - [x] Allows manager to see products sold and stock.
-    - [x] Allows manager to see low stock.
-    - [x] Allows manager to add to inventory.
-    - [x] Allows manager to add a new product.
-- Supervisor
-    - [x] Allows supervisor to see profits.
-    - [x] Allows supervisor to add a new department.
+    - Handles invalid user input.
+#### <a name="customer">Customer
+    - Allows purchasing of items in stock.
+    - Allows user to view products.
+    - Informs user of insufficent stock upon purchase.
+#### <a name="manager">Manager
+    - Allows manager to see products sold and stock.
+    - Allows manager to see low stock.
+    - Allows manager to add to inventory.
+    - Allows manager to add a new product.
+#### <a name="supervisor">Supervisor
+    - Allows supervisor to see profits.
+    - Allows supervisor to add a new department.
 
 # <a name="demo"></a>Demo
 
@@ -49,7 +51,8 @@ npm i
 DB_PASS=inputPasswordHere
 DB_USER=inputUsernameHere
 ```
-* Step four: Run the following command:
+* Step four: Make sure to create your database within MySQL useing the MySQL schema found in bamazon.sql file. 
+* Step five: Run the following command:
 ```
 node bamazon
 ```
