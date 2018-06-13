@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const inquirer = require("inquirer");
-const colors = require('colors');
 const { table } = require('table');
 const customer = require('./bamazonCustomer');
 const manager = require('./bamazonManager');
