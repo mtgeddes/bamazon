@@ -28,13 +28,13 @@ There are three built in options:
 
 # <a name="demo"></a>Demo
 
-###Customer Demo
+### Customer Demo
 ![Customer](/gifs/customer.gif)
 
-###Manager Demo
+### Manager Demo
 ![Manager](/gifs/manager.gif)
 
-###Supervisor Demo
+### Supervisor Demo
 ![Supervisor](/gifs/supervisor.gif)
 
 # <a name="setup"></a>Setup
