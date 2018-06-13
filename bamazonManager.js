@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const colors = require('colors');
 const { table } = require('table');
-const bamazon = require('./bamazon');
+const bamazon = require('./server');
 
 let connection = mysql.createConnection({
     host: "localhost",
