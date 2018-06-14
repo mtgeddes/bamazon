@@ -9,7 +9,7 @@ const mysql = require("mysql");
 
 let connection = mysql.createConnection({
     host: "localhost",
-    port: 3306,                             // Your port; if not 3306
+    port: process.env.PORT || 3306,         // Your port; if not 3306
     user: process.env.DB_USER,              // Your username
     password: process.env.DB_PASS,          // Your password
     database: "bamazon"                     // The database name
