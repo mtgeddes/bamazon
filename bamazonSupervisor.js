@@ -16,7 +16,7 @@ let connection = mysql.createConnection({
 function bamazonSupervisor () {
         
     // Clears the terminal...
-    process.stdout.write('\033c'); 
+    // process.stdout.write('\033c'); 
     
     // Establishes the variables for the table npm to display the information in a clean table...
     let config,

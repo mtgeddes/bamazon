@@ -21,7 +21,7 @@ let config,
 function bamazonCustomer () {
         
     // Clears the terminal...
-    process.stdout.write('\033c'); 
+    //process.stdout.write('\033c'); 
 
     // Displays the open welcome screen...
     let config,
