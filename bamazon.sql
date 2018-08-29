@@ -1,3 +1,5 @@
+/*
+
 CREATE DATABASE bamazon;
 
 USE bamazon;
@@ -25,8 +27,6 @@ VALUES
 ("silverware", "kitchen", 20, 3, 100),
 ("cups", "kitchen", 10, 25, 100);
 
-drop table departments;
-
 CREATE TABLE departments (
 department_id INT NOT NULL AUTO_INCREMENT,
 department_name CHAR (12) NOT NULL,
@@ -43,3 +43,5 @@ VALUES ("electronics", 5000),
 
 SELECT * FROM products;
 SELECT * FROM departments;
+
+*/
